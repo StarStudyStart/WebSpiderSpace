@@ -31,7 +31,7 @@ def printUniverList(ulist,num):
 	tplt = "{0:^10}\t{1:{4}^10}\t{2:{4}^10}\t{3:^10}"
 	# print(tplt.format("排名","大学名称","省市","排名积分",chr(12288)))
 
-	with open('./tUniverList.csv','w+',newline='') as f:
+	with open('./tUniverList.csv','w+',newline='') as f: 
 		csvWriter = csv.writer(f)
 		csvWriter.writerow(["排名","大学名称","省市","排名积分"])
 		for n in range(num):
