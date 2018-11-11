@@ -48,7 +48,8 @@ def get_one_page_message(driver):
     talks = driver.find_elements_by_xpath("//div[@class='bd']/pre")
     create_time_list = driver.find_elements_by_xpath("//div[@class='ft']/\
 div[@class='info']")
-    with open('./talk_string.txt','a+',encoding='utf8') as f,open('./file_to_pic.txt','a',encoding='utf-8') as f2:
+    with open('./talk_string.txt','a+',encoding='utf8') as f,
+        open('./file_to_pic.txt','a',encoding='utf-8') as f2:
         for i in range(len(talks)):
             if talks[i].text=="":
                 f.write('表情\n')
@@ -100,12 +101,12 @@ def file_data_handle():
     with open('./file_to_pic.txt','r',encoding='utf-8') as f :
         string_talk = f.read()
     w = wordcloud.WordCloud(font_path='msyh.ttc',background_color='white',width = 1000,
-height = 600,mask = mk)
+        height = 600,mask = mk)
     w.generate("".join(jieba.lcut(string_talk)))
     w.to_file("./talks_pic.jpg")
         
     
-#driver = login_qqzone()
-#get_talk_message(driver)
+driver = login_qqzone()
+get_talk_message(driver)
 file_data_handle()
 
