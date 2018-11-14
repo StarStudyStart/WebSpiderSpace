@@ -26,8 +26,9 @@ def handleData(html):
         with open('explore.txt', 'a+', encoding="utf-8") as f:
             f.write("\n".join([question, author, answer]))
             f.write("\n\n{:=^50}\n".format('分割线'))
-    
-html = getHtmlText("https://www.zhihu.com/explore")
-handleData(html)
+            
+if __name__ == '__main__':
+    html = getHtmlText("https://www.zhihu.com/explore")
+    handleData(html)
 
 
