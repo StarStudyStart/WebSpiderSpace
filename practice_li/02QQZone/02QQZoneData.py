@@ -110,3 +110,14 @@ driver = login_qqzone()
 get_talk_message(driver)
 file_data_handle()
 
+def logined(logined_url, cookies, headers):
+    pass
+
+def login(url, username, password):
+    pass
+    
+def detect_cookie(host,):
+    global is_have_cookie
+    global is_useful_cookie
+    pass
+    
