@@ -6,7 +6,7 @@ import logging
 
 logging.basicConfig(level=logging.ERROR)
 
-class QutoesSpider(scrapy.Spider):
+class QutoesSpider(scrapy.Spider): 
     name = 'qutoes'
     allowed_domains = ['quotes.toscrape.com']
     start_urls = ['http://quotes.toscrape.com/']
