@@ -1,0 +1,68 @@
+{
+    "spider":"universal",
+    "website":"中华网",
+    "type":"新闻",
+    "index":"https://tech.china.com/",
+    "settings":{
+        "USER_AGENT":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36"
+    },
+    "start_urls":["https://tech.china.com/articles/"],
+    "allowed_domains":["tech.china.com"],
+    "rules":"china" ,
+    "item":{
+        "class":"NewsItem",
+        "loader":"ChinaLoader",
+        "attrs":{
+            "title":[
+                {
+                    "method":"css",
+                    "args":[
+                        "#chan_newsTitle ::text"
+                    ]
+                }
+            ],
+            "url":[
+                {
+                    "method":"attr",
+                    "args":[
+                        "url"
+                    ]
+                }
+            ],
+            "text":[
+                {
+                    "method":"css",
+                    "args":[
+                        "#chan_newsDetail ::text"
+                    ]
+                }
+            ],
+            "datetime":[
+                {
+                    "method":"css",
+                    "args":[
+                        "#chan_newsInfo ::text"
+                    ],
+                    "re":"(\\d{4}-\\d+-\\d+\\s\\d+:\\d+:\\d+)"
+                }
+            ],
+            "source":[
+                {
+                    "method":"css",
+                    "args":[
+                        "#chan_newsInfo::text"
+                    ],
+                    "re":"来源：(.*)"
+                }
+            ],
+            "website":[
+                {
+                    "method":"value",
+                    "args":[
+                        "中华网"
+                    ]
+                }
+            ]
+        }
+    }
+}
