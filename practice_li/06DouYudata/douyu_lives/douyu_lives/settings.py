@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for tutorial project
+# Scrapy settings for douyu_lives project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,17 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tutorial'
+BOT_NAME = 'douyu_lives'
 
-SPIDER_MODULES = ['tutorial.spiders']
-NEWSPIDER_MODULE = 'tutorial.spiders'
+SPIDER_MODULES = ['douyu_lives.spiders']
+NEWSPIDER_MODULE = 'douyu_lives.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+#USER_AGENT = 'douyu_lives (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -46,15 +46,22 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+    'scrapy_splash.SplashDeduplicateArgsMiddleware':100
+#    'douyu_lives.middlewares.DouyuLivesSpiderMiddleware': 543,
+}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware':723,
+    'scrapy_splash.SplashMiddleware':725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware':810,
+#    'douyu_lives.middlewares.DouyuLivesDownloaderMiddleware': 543,
+}
+
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -64,13 +71,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    'tutorial.pipelines.TextPipeline': 300,
-    'tutorial.pipelines.MongoPipeLine':400,
-}
-
-MONGO_URI = 'localhost'
-MONGO_DB = 'tutorial'
+#ITEM_PIPELINES = {
+#    'douyu_lives.pipelines.DouyuLivesPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

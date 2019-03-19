@@ -9,9 +9,11 @@ from scrapy import Item, Field
 
 
 class WeiboItem(Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    comments_count = Field()
+    created_at = Field()
+    obj_ext = Field()
+    text = Field()
+    raw_text = Field()
     
 class UserItem(Item):
     
@@ -30,4 +32,5 @@ class FollowItem(UserItem):
     follow_id = Field()
     
 class FansItem(UserItem):
-    pass
+    fans_id = Field()
+    

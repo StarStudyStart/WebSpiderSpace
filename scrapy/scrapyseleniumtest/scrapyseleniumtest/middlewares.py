@@ -54,7 +54,7 @@ class SeleniumDownloaderMiddleware(object):
             self.wait_condition(page)
             #返回当前页的源码
             return HtmlResponse(url=request.url, body=self.browser.page_source,
-                request=request, encoding='utf-8',status=200)
+                request=request, encoding='utf-8', status=200)
         except TimeoutException:
             #请求超时返回状态码 500
             return HtmlResponse(url=request.url, status=500, request=request)

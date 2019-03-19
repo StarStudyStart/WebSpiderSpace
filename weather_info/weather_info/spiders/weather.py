@@ -16,10 +16,11 @@ class WeatherSpider(scrapy.Spider):
                 weather_code = re.findall(r'\"\d{9}\"',codeList)[0][1:-1]
                 url = 'http://wthrcdn.etouch.cn/WeatherApi?citykey='+weather_code #int 类型不能和str拼接
                 self.count = self.count+1
-                yield scrapy.Request(url,callback = self.parse_weather)
+                yield scrapy.Request(url, callback = self.parse_weather)
             except:
                 continue
-    def parse_weather(self,response):
+                
+    def parse_weather(self, response):
         infoDict = {}
         city = response.css('city').extract()[0][6:-7]   #extract() 返回的列表类型 [0] 返回列表之后的第一个值
         wendu = response.css('wendu').extract()[0][7:-8]
