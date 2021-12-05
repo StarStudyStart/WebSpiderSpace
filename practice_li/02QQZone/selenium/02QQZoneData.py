@@ -14,7 +14,7 @@ import re
 def login_qqzone():
     '''登陆qq空间'''
     uname = '1403913161'
-    pwd = 'lyb12153719abc'
+    pwd = 'xxxx'
     #driver = webdriver.PhantomJS(executable_path='E:\\python_package\
     #\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
     
